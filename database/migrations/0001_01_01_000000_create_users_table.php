@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->foreignId('message_id')->nullable()->constrained('messages')->onDelete('cascade');
+            $table->foreignId('chat_id')->nullable()->constrained('chat_rooms')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

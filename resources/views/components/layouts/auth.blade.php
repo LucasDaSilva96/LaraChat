@@ -16,22 +16,8 @@
 
         @endif
     </head>
-    <body class="HtmlContainer">
-
-        <div class="absolute inset-0 flex items-center justify-center p-2">
-
-
-            <div class="w-full max-w-7xl h-[90dvh] bg-white/10 backdrop-blur text-slate-50 rounded p-2 flex">
-
-                <x-asideDash :chats="$chats"  />
-
-                <main class="w-full">
-                    {{ $slot }}
-                </main>
-
-            </div>
-
-        </div>
-
+    <body class="w-full h-screen bg-gradient-to-r from-blue-800 to-purple-600 flex items-center justify-center">
+            {{$slot}}
     </body>
+
 </html>

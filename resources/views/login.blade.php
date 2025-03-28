@@ -12,7 +12,7 @@
   <p style="animation: appear 3s ease-out;" class="text-center text-gray-200">
     Sign in to your account
   </p>
-  <form method="POST" action="#" class="space-y-6">
+  <form method="POST" action="/login" class="space-y-6">
     @csrf
     @method('POST')
     <div class="relative">

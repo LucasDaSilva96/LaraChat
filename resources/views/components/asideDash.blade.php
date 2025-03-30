@@ -2,28 +2,32 @@
     'chats' => [],
 ])
 
-<aside id="aside_dash" class="w-[200px] md:w-xs max-h-full overflow-y-auto overflow-x-hidden p-2 border rounded border-white/20 flex flex-col items-center">
 
-    <ul>
+<aside id="aside_dash" class="w-[200px] md:w-xs max-h-full overflow-y-auto overflow-x-hidden border rounded border-white/20 flex flex-col items-center">
+
+    <x-asideHeader />
+
+
+    <ul class="p-2 max-h-[77.5%] h-full overflow-y-auto w-full flex flex-col gap-2">
 
         @foreach ($chats as $chat )
 
-        <li>
+        <li class="transition-all bg-transparent hover:bg-gray-950/90 rounded-lg flex items-center justify-between px-2 py-1.5 {{request()->is('chat/' . $chat->id) ? 'bg-gray-950/90!' : ''}}">
 
             <a href="{{route('chat', [$chat->id])}}">
                 {{$chat->title}}
             </a>
 
         </li>
-        @endforeach
+      @endforeach
 
     </ul>
 
     <div
-        class="flex bg-neutral-200 w-fit px-1.25 py-1.25 shadow-box-up rounded-2xl dark:bg-box-dark dark:shadow-box-dark-out mt-auto"
+        class="flex bg-gradient-to-b from-gray-900 via-gray-950/90 to-black w-full px-1.25 py-1.25 shadow-box-up dark:bg-box-dark dark:shadow-box-dark-out mt-auto"
         >
     <div
-        class="dark:shadow-buttons-box-dark rounded-2xl w-full px-1.5 py-1.5 flex items-center justify-between bg-neutral-200 dark:bg-box-dark shadow-box-up"
+        class="dark:shadow-buttons-box-dark rounded-2xl w-full px-1.5 py-1.5 flex items-center justify-evenly  dark:bg-box-dark shadow-box-up"
     >
 
 
@@ -31,7 +35,7 @@
         href="{{ route('welcome') }}"
         id="home"
         title="Go to the home page"
-        class="text-light-blue-light cursor-pointer hover:text-black dark:text-gray-400 border-2 inline-flex items-center mr-4 last-of-type:mr-0 p-2.5 border-transparent bg-light-secondary shadow-button-flat-nopressed hover:border-2 hover:shadow-button-flat-pressed focus:opacity-100 focus:outline-none active:border-2 active:shadow-button-flat-pressed font-medium rounded-full text-sm text-center dark:bg-button-curved-default-dark dark:shadow-button-curved-default-dark dark:hover:bg-button-curved-pressed-dark dark:hover:shadow-button-curved-pressed-dark dark:active:bg-button-curved-pressed-dark dark:active:shadow-button-curved-pressed-dark dark:focus:bg-button-curved-pressed-dark dark:focus:shadow-button-curved-pressed-dark dark:border-0"
+        class="text-light-blue-light cursor-pointer hover:text-slate-50 dark:text-gray-400 border-2 inline-flex items-center mr-4 last-of-type:mr-0 p-2.5 border-transparent bg-light-secondary shadow-button-flat-nopressed  hover:shadow-button-flat-pressed focus:opacity-100 focus:outline-none active:border-2 active:shadow-button-flat-pressed font-medium rounded-full text-sm text-center dark:bg-button-curved-default-dark dark:shadow-button-curved-default-dark dark:hover:bg-button-curved-pressed-dark dark:hover:shadow-button-curved-pressed-dark dark:active:bg-button-curved-pressed-dark dark:active:shadow-button-curved-pressed-dark dark:focus:bg-button-curved-pressed-dark dark:focus:shadow-button-curved-pressed-dark dark:border-0"
         >
         <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +57,7 @@
         <button
         id="signout"
         title="Sign out"
-        class="text-light-blue-light cursor-pointer hover:text-black dark:text-gray-400 border-2 inline-flex items-center mr-4 last-of-type:mr-0 p-2.5 border-transparent bg-light-secondary shadow-button-flat-nopressed hover:border-2 hover:shadow-button-flat-pressed focus:opacity-100 focus:outline-none active:border-2 active:shadow-button-flat-pressed font-medium rounded-full text-sm text-center dark:bg-button-curved-default-dark dark:shadow-button-curved-default-dark dark:hover:bg-button-curved-pressed-dark dark:hover:shadow-button-curved-pressed-dark dark:active:bg-button-curved-pressed-dark dark:active:shadow-button-curved-pressed-dark dark:focus:bg-button-curved-pressed-dark dark:focus:shadow-button-curved-pressed-dark dark:border-0"
+        class="text-light-blue-light cursor-pointer hover:text-slate-50 dark:text-gray-400 border-2 inline-flex items-center mr-4 last-of-type:mr-0 p-2.5 border-transparent bg-light-secondary shadow-button-flat-nopressed hover:border-2 hover:shadow-button-flat-pressed focus:opacity-100 focus:outline-none active:border-2 active:shadow-button-flat-pressed font-medium rounded-full text-sm text-center dark:bg-button-curved-default-dark dark:shadow-button-curved-default-dark dark:hover:bg-button-curved-pressed-dark dark:hover:shadow-button-curved-pressed-dark dark:active:bg-button-curved-pressed-dark dark:active:shadow-button-curved-pressed-dark dark:focus:bg-button-curved-pressed-dark dark:focus:shadow-button-curved-pressed-dark dark:border-0"
         >
         <svg class="w-4 h-4" viewBox="0 0 512 512" fill="currentColor">
             <path

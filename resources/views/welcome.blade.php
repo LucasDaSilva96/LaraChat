@@ -49,11 +49,9 @@ const options = {
   month: 'short',
   day: 'numeric',
 };
-const dateString = date.toLocaleDateString('en-US', options);
+const dateString = date.toLocaleDateString('sv-SV', options);
 const hour = date.getHours();
 const minutes = date.getMinutes();
-const ampm = hour >= 12 ? 'PM' : 'AM';
-const formattedHour = hour % 12 || 12;
 const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 const puls = document.getElementById('puls');
 
@@ -76,16 +74,17 @@ setInterval(() => {
   const date = new Date();
   const hour = date.getHours();
   const minutes = date.getMinutes();
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  const formattedHour = hour % 12 || 12;
+
   const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-  hour_element.innerHTML = formattedHour + '<span class="text-xl font-bold text-gray-50 [text-shadow:none]">:</span>' + formattedMinutes;
+  hour_element.innerHTML = hour + '<span class="text-xl font-bold text-gray-50 [text-shadow:none]">:</span>' + formattedMinutes;
   minutes_element.innerHTML = formattedMinutes;
 }, 1000);
 date_element.innerHTML = dateString;
-hour_element.innerHTML = formattedHour + '<span class="text-xl font-bold text-gray-50 [text-shadow:none]">:</span>' + formattedMinutes;
+hour_element.innerHTML = hour + '<span class="text-xl font-bold text-gray-50 [text-shadow:none]">:</span>' + formattedMinutes;
 minutes_element.innerHTML = formattedMinutes;
+
+// Reverb
 
 </script>
 </x-layouts.default>

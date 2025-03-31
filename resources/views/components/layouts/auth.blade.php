@@ -15,6 +15,7 @@
             @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @endif
+        <script src="//unpkg.com/alpinejs" defer></script>
     </head>
     <body class="w-full h-screen bg-gradient-to-r from-blue-800 to-purple-600 flex items-center justify-center">
             {{$slot}}

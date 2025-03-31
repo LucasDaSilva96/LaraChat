@@ -1,4 +1,12 @@
 <x-layouts.default>
+      <div
+    x-init="
+    Echo.channel('chat').listen('App.Events.Chat', (e) => {
+        console.log(e);
+
+    });
+    "
+    ></div>
 
 <div
   class="bg-zinc-800 shadow-md rounded-lg overflow-hidden h-full w-full"
@@ -30,23 +38,43 @@
       </div> --}}
 
         @foreach ($chat->messages as $message)
+        <div class="self-{{ $message->user_id === auth()->id() ? 'end' : 'start' }} flex items-{{ $message->user_id === auth()->id() ? 'end' : 'start' }}  gap-2 flex-col">
             <div
-            class="chat-message self-{{ $message->user_id === auth()->id() ? 'end' : 'start' }} bg-{{ $message->user_id === auth()->id() ? 'blue' : 'zinc' }}-500 text-white max-w-xs rounded-lg px-3 py-1.5 text-sm"
+            class="chat-message bg-{{ $message->user_id === auth()->id() ? 'blue' : 'zinc' }}-500 text-white max-w-xs rounded-lg px-3 py-1.5 text-sm relative"
             >
-            {{ $message->content }}
-            </div>
+            <span>
+                {{ $message->content }}
+            </span>
+
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-gray-400">
+
+            <span class="">
+                {{ $message->created_at }}
+            </span>
+
+            <span>
+                @ {{ $message->user->name ?? '' }}
+            </span>
+        </div>
+    </div>
         @endforeach
 
     </div>
     <div class="px-3 py-2 border-t dark:border-zinc-700">
-      <form action="#" method="POST" class="flex gap-2">
+      <form action="/send-message" method="POST" class="flex gap-2">
         @csrf
         @method('POST')
+        <input type="text" name="chat_room_id" id="chart_room_id" value="{{ $chat->id }}" hidden>
+
         <input
-          placeholder="Type your message..."
-          class="flex-1 p-2 border rounded-lg dark:bg-zinc-700 dark:text-white dark:border-zinc-600 text-sm"
-          id="chatInput"
-          type="text"
+        placeholder="Type your message..."
+        class="flex-1 p-2 border rounded-lg dark:bg-zinc-700 dark:text-white dark:border-zinc-600 text-sm"
+        id="chatInput"
+        type="text"
+        name="content"
+        required
+        autocomplete="off"
         />
        <button
        type="submit"
@@ -72,20 +100,12 @@
     </div>
   </div>
 </div>
-{{-- <script>
+<script>
   const chatDisplay = document.getElementById("chatDisplay");
-  const chatInput = document.getElementById("chatInput");
-  const sendButton = document.getElementById("sendButton");
 
-  sendButton.addEventListener("click", () => {
-    const message = chatInput.value;
-    chatInput.value = "";
-
-    const messageElement = document.createElement("div");
-    messageElement.classList.add("chat-message", "self-end", "bg-blue-500", "text-white", "max-w-xs", "rounded-lg", "px-3", "py-1.5", "text-sm");
-    messageElement.textContent = message;
-
-    chatDisplay.appendChild(messageElement);
+  window.addEventListener("DOMContentLoaded", function () {
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
   });
-</script> --}}
+
+</script>
 </x-layouts.default>

@@ -1,6 +1,8 @@
 <?php
 
+use App\Events\Chat;
 use App\Http\Controllers\ChatRoomController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +15,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/chat/{id}', [ChatRoomController::class, 'index'])->name('chat');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+
+    // *** Messages
+    Route::post('/send-message', [MessageController::class, 'send'])->name('send.message');
 
 });
 

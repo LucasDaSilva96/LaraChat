@@ -43,7 +43,7 @@ class Chat implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new Channel('chat'),
+            new Channel('chat.room.' . $this->message->chat_room_id),
         ];
     }
 }

@@ -1,7 +1,11 @@
 <x-layouts.default>
-<section class="w-full h-full flex flex-col items-center justify-center gap-10">
+<section class="w-full h-full flex flex-col items-center justify-center gap-10 relative overflow-hidden max-w-[1200px]">
 
-    <x-heading heading_1="Welcome" heading_2="{{auth()->user()->name}}" />
+    <div class="absolute top-[20%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[10000]">
+
+        <x-heading heading_1="Welcome" heading_2="{{auth()->user()->name}}" />
+
+    </div>
 
     <div class="w-56 h-56 bg-neutral-900 shadow-inner shadow-gray-50 flex justify-center items-center rounded-3xl">
         <div class="flex flex-col items-center justify-center rounded-2xl bg-neutral-900 shadow-inner shadow-gray-50 w-52 h-52">
@@ -11,13 +15,15 @@
                 :</span>
                 <span id="minutes"></span>
             </span>
-            <div class="text-gray-50 w-48 flex flex-row justify-center">
-            <span id="puls" class="text-xs font-bold"></span>
+            <div class="text-gray-50 w-48 flex justify-center">
+                <div class="flex items-center gap-0.5">
+                    <span id="puls" class="text-xs font-bold"></span>
+                      <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-5 h-5 fill-red-500 animate-pulse">
+                    <path fill-rule="evenodd" d="M23,27.6a15.8,15.8,0,0,1,22.4,0L50,32.2l4.6-4.6A15.8,15.8,0,0,1,77,50L50,77,23,50A15.8,15.8,0,0,1,23,27.6Z" class="">
+                    </path>
+                    </svg>
+                </div>
             <div class="flex flex-row items-center">
-                <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-5 h-5 fill-red-500 animate-bounce">
-                <path fill-rule="evenodd" d="M23,27.6a15.8,15.8,0,0,1,22.4,0L50,32.2l4.6-4.6A15.8,15.8,0,0,1,77,50L50,77,23,50A15.8,15.8,0,0,1,23,27.6Z" class="">
-                </path>
-                </svg>
                 <svg y="0" xmlns="http://www.w3.org/2000/svg" x="0" width="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" height="100" class="w-5 h-5 fill-current">
                 <path d="M80.2,40.7l-1.1-2-.2-.3.3-.3c2.2-14.7-21.3-25.6-20.7-21S57,38.1,45.4,31.8c-9.3-5.1-12.9,12.1-22.8,33.7C16.2,79.4,20.8,82.3,27,81l.3.4L29,83.3a1.4,1.4,0,0,0,1.8.5l.9-.3a1.6,1.6,0,0,0,1.1-1.9l-.5-2.5a38.2,38.2,0,0,0,4.5-2.7L38.6,78a1.8,1.8,0,0,0,2.4-.1l1.2-1.1a1.9,1.9,0,0,0,.4-1.9l-1-2.5L45.5,69l1.7,1.6a1.8,1.8,0,0,0,2.4-.1l.9-1a1.7,1.7,0,0,0,.4-1.8L50,65c5.6-5,11.9-10.9,17.3-15.8l.4.2,1.9,1.1a1.6,1.6,0,0,0,2.1-.2l.8-.8a1.6,1.6,0,0,0,.3-2.1l-1.3-2.1,3.2-3.1,2.2,1.5a1.8,1.8,0,0,0,2.2-.1l.8-.8A1.7,1.7,0,0,0,80.2,40.7Z" class="svg-fill-primary">
                 </path>
@@ -33,6 +39,27 @@
         </div>
     </div>
 
+      <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+      </div>
 
 </section>
 

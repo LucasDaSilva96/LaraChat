@@ -12,13 +12,10 @@
 
         @foreach ($chats as $chat )
 
-        <li class="transition-all bg-transparent hover:bg-gray-950/90 rounded-lg flex items-center justify-between px-2 py-1.5 {{request()->is('chat/' . $chat->id) ? 'bg-gray-950/90!' : ''}}">
+        <a href="{{route('chat', [$chat->id])}}" class="transition-all bg-transparent hover:bg-gray-950/90 rounded-lg flex items-center justify-between px-2 py-1.5 {{request()->is('chat/' . $chat->id) ? 'bg-gray-950/90!' : ''}}">
 
-            <a href="{{route('chat', [$chat->id])}}">
-                {{$chat->title}}
-            </a>
-
-        </li>
+        {{$chat->title}}
+    </a>
       @endforeach
 
     </ul>

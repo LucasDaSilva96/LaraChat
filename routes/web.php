@@ -4,6 +4,9 @@ use App\Events\Chat;
 use App\Http\Controllers\ChatRoomController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
+use App\Models\ChatRoom;
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {

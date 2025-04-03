@@ -41,3 +41,317 @@
         background-position: 40px 40px;
     }
 }
+
+.confetti {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 1000px;
+    height: 90%;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: hsl(39, 100%, 56%);
+    top: 0;
+    opacity: 0;
+    animation: makeItRain 3000ms infinite linear;
+}
+
+.confetti-piece:nth-child(1) {
+    left: 7%;
+    transform: rotate(-10deg);
+    animation-delay: 182ms;
+    animation-duration: 2000ms;
+}
+
+.confetti-piece:nth-child(2) {
+    left: 14%;
+    transform: rotate(20deg);
+    animation-delay: 161ms;
+    animation-duration: 2076ms;
+}
+
+.confetti-piece:nth-child(3) {
+    left: 21%;
+    transform: rotate(-51deg);
+    animation-delay: 481ms;
+    animation-duration: 2103ms;
+}
+
+.confetti-piece:nth-child(4) {
+    left: 28%;
+    transform: rotate(61deg);
+    animation-delay: 334ms;
+    animation-duration: 1008ms;
+}
+
+.confetti-piece:nth-child(5) {
+    left: 35%;
+    transform: rotate(-52deg);
+    animation-delay: 302ms;
+    animation-duration: 1776ms;
+}
+
+.confetti-piece:nth-child(6) {
+    left: 42%;
+    transform: rotate(38deg);
+    animation-delay: 180ms;
+    animation-duration: 1168ms;
+}
+
+.confetti-piece:nth-child(7) {
+    left: 49%;
+    transform: rotate(11deg);
+    animation-delay: 395ms;
+    animation-duration: 1200ms;
+}
+
+.confetti-piece:nth-child(8) {
+    left: 56%;
+    transform: rotate(49deg);
+    animation-delay: 14ms;
+    animation-duration: 1887ms;
+}
+
+.confetti-piece:nth-child(9) {
+    left: 63%;
+    transform: rotate(-72deg);
+    animation-delay: 149ms;
+    animation-duration: 1805ms;
+}
+
+.confetti-piece:nth-child(10) {
+    left: 70%;
+    transform: rotate(10deg);
+    animation-delay: 351ms;
+    animation-duration: 2059ms;
+}
+
+.confetti-piece:nth-child(11) {
+    left: 77%;
+    transform: rotate(4deg);
+    animation-delay: 307ms;
+    animation-duration: 1132ms;
+}
+
+.confetti-piece:nth-child(12) {
+    left: 84%;
+    transform: rotate(42deg);
+    animation-delay: 464ms;
+    animation-duration: 1776ms;
+}
+
+.confetti-piece:nth-child(13) {
+    left: 91%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 1818ms;
+}
+
+.confetti-piece:nth-child(14) {
+    left: 94%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 818ms;
+}
+
+.confetti-piece:nth-child(15) {
+    left: 96%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 2818ms;
+}
+
+.confetti-piece:nth-child(16) {
+    left: 98%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 2818ms;
+}
+
+.confetti-piece:nth-child(17) {
+    left: 50%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 2818ms;
+}
+
+.confetti-piece:nth-child(18) {
+    left: 60%;
+    transform: rotate(-72deg);
+    animation-delay: 429ms;
+    animation-duration: 1818ms;
+}
+
+.confetti-piece:nth-child(odd) {
+    background-color: hsl(0, 100%, 67%);
+}
+
+.confetti-piece:nth-child(even) {
+    z-index: 1;
+}
+
+.confetti-piece:nth-child(4n) {
+    width: 6px;
+    height: 14px;
+    animation-duration: 4000ms;
+    background-color: #c33764;
+}
+
+.confetti-piece:nth-child(5n) {
+    width: 3px;
+    height: 10px;
+    animation-duration: 4000ms;
+    background-color: #b06ab3;
+}
+
+.confetti-piece:nth-child(3n) {
+    width: 4px;
+    height: 12px;
+    animation-duration: 2500ms;
+    animation-delay: 3000ms;
+    background-color: #dd2476;
+}
+
+.confetti-piece:nth-child(3n-7) {
+    background-color: hsl(166, 100%, 37%);
+}
+
+@keyframes makeItRain {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(450px);
+    }
+}
+
+/* From Uiverse.io by Juanes200122 */
+.loader {
+    width: 30px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #000000cb 90%, #0000);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 50%;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    20% {
+        background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+
+    40% {
+        background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+
+    60% {
+        background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+
+    80% {
+        background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+}
+
+/* *********** */
+/* From Uiverse.io by aaronross1 */
+.typing-indicator {
+    width: 60px;
+    height: 10px;
+    position: relative;
+    z-index: 4;
+}
+
+.typing-circle {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #464646;
+    left: 15%;
+    transform-origin: 50%;
+    animation: typing-circle7124 0.5s alternate infinite ease;
+}
+
+@keyframes typing-circle7124 {
+    0% {
+        top: 20px;
+        height: 5px;
+        border-radius: 50px 50px 25px 25px;
+        transform: scaleX(1.7);
+    }
+
+    40% {
+        height: 8px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+.typing-circle:nth-child(2) {
+    left: 45%;
+    animation-delay: 0.2s;
+}
+
+.typing-circle:nth-child(3) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+}
+
+.typing-shadow {
+    width: 5px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(160, 160, 160, 0.2);
+    position: absolute;
+    top: 30px;
+    transform-origin: 50%;
+    z-index: 3;
+    left: 15%;
+    filter: blur(1px);
+    animation: typing-shadow046 0.5s alternate infinite ease;
+}
+
+@keyframes typing-shadow046 {
+    0% {
+        transform: scaleX(1.5);
+    }
+
+    40% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scaleX(0.2);
+        opacity: 0.4;
+    }
+}
+
+.typing-shadow:nth-child(4) {
+    left: 45%;
+    animation-delay: 0.2s;
+}
+
+.typing-shadow:nth-child(5) {
+    left: auto;
+    right: 15%;
+    animation-delay: 0.3s;
+}

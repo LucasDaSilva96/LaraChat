@@ -1,14 +1,16 @@
 <?php
 
+use App\Models\ChatRoom;
+use App\Models\User;
 use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('chat.{roomId}', function (User $user, ChatRoom $roomId) {
+
+    return $user->only(['id', 'name']);
 });
 
 
 
-Broadcast::channel('chat', function () {
-
-    //
+Broadcast::channel('app', function(User $user) {
+    return true;
 });

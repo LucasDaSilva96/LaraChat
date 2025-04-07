@@ -55,32 +55,47 @@
     <div
       class="flex-1 p-3 overflow-y-auto flex flex-col space-y-2"
       id="chatDisplay"
+       x-data="{
+        chatMessages: JSON.parse('{{ addslashes(json_encode($chat->messages)) }}'),
+        authUserId: {{ auth()->id() }},
+        chatId: {{ $chat->id }}
+        }"
+        x-init="
+         const channel =  Echo.private('app');
+         channel.listenForWhisper('chat.' + this.chatId, (e) => {
+                    console.log(e);
+                    this.chatMessages.push(e.message);
+                    this.$nextTick(() => {
+                        const chatDisplay = this.$refs.chatDisplay;
+                        chatDisplay.scrollTop = chatDisplay.scrollHeight;
+                    });
+                });
+        "
     >
 
-        @forelse ($chat->messages as $message)
-        <div class="self-{{ $message->user_id === auth()->id() ? 'end' : 'start' }} flex items-{{ $message->user_id === auth()->id() ? 'end' : 'start' }}  gap-2 flex-col">
+         <template x-for="message in chatMessages" :key="message.id">
             <div
-            class="chat-message bg-{{ $message->user_id === auth()->id() ? 'blue' : 'zinc' }}-500 text-white max-w-xs rounded-lg px-3 py-1.5 text-sm relative"
+                class="flex gap-2 flex-col"
+                :style="{
+                    alignItems: message.user_id === authUserId ? 'end' : 'start',
+                    justifyContent: message.user_id === authUserId ? 'end' : 'start',
+                }"
             >
-            <span>
-                {{ $message->content }}
-            </span>
-
-        </div>
-        <div class="flex items-center gap-1 text-[10px] text-gray-400">
-
-            <span class="">
-                {{ $message->created_at }}
-            </span>
-
-            <span>
-                 {{ $message->user->name ?? '' }}
-            </span>
-        </div>
-    </div>
-        @empty
-        <p class="text-gray-400 text-sm">No messages yet.</p>
-        @endforelse
+                <div
+                    :style="{
+                        backgroundColor: message.user_id === authUserId ? '#3B82F6' : '#374151',
+                    }"
+                    class="chat-message text-white max-w-xs rounded-lg px-3 py-1.5 text-sm relative"
+                    :class="message.user_id === authUserId ? 'bg-blue-500' : 'bg-zinc-500'"
+                >
+                    <span x-text="message.content"></span>
+                </div>
+                <div class="flex items-center gap-1 text-[10px] text-gray-400">
+                    <span x-text="new Date(message.created_at).toLocaleString()"></span>
+                    <span x-text="message.user?.name ?? ''"></span>
+                </div>
+            </div>
+        </template>
 
         <div
         x-init="
@@ -91,7 +106,6 @@
 
 
         channel.listenForWhisper('typing', (e) => {
-        console.log(e);
 
             if (e.user_id !== {{ auth()->id() }} && e.chat_room_id === {{ $chat->id }}) {
                 typingBox.classList.remove('hidden');
@@ -104,7 +118,6 @@
                 typingBox.classList.add('hidden');
             }, 2000);
         });
-
         "
         >
         <div id="typing_box" class="hidden">
@@ -152,6 +165,19 @@
         autocomplete="off"
         />
        <button
+       x-data="{
+        chatId: {{ $chat->id }},
+        }"
+       x-init="
+        const btn = document.getElementById('sendButton');
+        btn.addEventListener('click', function () {
+         console.log('clicked');
+            if (this.value.length > 0) {
+                Echo.private('app').whisper('chat.' + this.chatId, {
+                    message: 'Hello',
+                });
+            }"
+       id="sendButton"
        type="submit"
         class="flex items-center bg-blue-500 text-white gap-1 px-4 py-2 cursor-pointer  font-semibold tracking-widest rounded-md hover:bg-blue-400 duration-300 hover:gap-2 hover:translate-x-3"
         >
@@ -181,6 +207,7 @@
   window.addEventListener("DOMContentLoaded", function () {
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
   });
+
 
 </script>
 
